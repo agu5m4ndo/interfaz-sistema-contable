@@ -12,10 +12,11 @@ namespace Sistema_contable
     {
 
         public static Blockchain blockchain = new Blockchain();
-
+        string PersistenceFile = @"C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\blockchain.json";
+        
         public ContabilidadService()
         {
-            
+           
         }
 
         public Block GuardarAsiento(Seat asiento)
@@ -24,8 +25,7 @@ namespace Sistema_contable
             {
                 Block block = new Block(asiento, blockchain);
                 blockchain.Blocks.Add(block);
-
-                Debug.WriteLine("Cantidad de asientos: " + blockchain.Blocks.Count);
+                Persist.PersistBlockchain(blockchain);
                 return block;
             }
 

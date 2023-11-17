@@ -9,9 +9,9 @@ namespace Sistema_contable
     {
         ContabilidadService service;
         List<Account> accounts = new List<Account>();
-        List<String> nombreCuentas = new List<String>{"Caja", "Banco", "Mercadería", "Deudores Varios", "Rodados", "Proveedores", "Instalaciones", "Muebles y Útiles", "Ventas", "Documentos a Pagar", "Alquileres", "Seguros", "Seguros", "Impuestos", "Valores a Depositar"};
+        List<String> nombreCuentas = new List<String> { "Caja", "Banco", "Mercadería", "Deudores Varios", "Rodados", "Proveedores", "Instalaciones", "Muebles y Útiles", "Ventas", "Documentos a Pagar", "Alquileres", "Seguros", "Seguros", "Impuestos", "Valores a Depositar" };
         //Crear lista de strings con elementos previos
-        
+
         public AddAsiento(ContabilidadService service)
         {
             InitializeComponent();
@@ -104,7 +104,7 @@ namespace Sistema_contable
                 return;
             }
             ErrorMessage.Visible = false;
-            DateTime fecha = AccountDate.Value.ToUniversalTime();
+            DateTime fecha = AccountDate.Value;
 
             TipoCuenta destino = (TipoCuenta)(radioButton1.Checked ? TipoCuenta.Debe : TipoCuenta.Haber);
 

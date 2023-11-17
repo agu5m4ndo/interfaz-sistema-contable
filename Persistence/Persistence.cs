@@ -5,7 +5,7 @@ namespace Sistema_contable
 {
     public class Persist
     {
-        private const string PersistenceFile = "blockchain.json";
+        private const string PersistenceFile = @"C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\blockchain.json";
         public static bool PersistBlockchain(Blockchain blockchain)
         {
             try

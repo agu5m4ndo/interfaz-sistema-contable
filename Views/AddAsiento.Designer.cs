@@ -300,7 +300,7 @@
             AccountDate.Name = "AccountDate";
             AccountDate.Size = new Size(95, 23);
             AccountDate.TabIndex = 16;
-            AccountDate.Value = new DateTime(2023, 11, 13, 0, 0, 0, 0);
+            AccountDate.Value = new DateTime(2023, 11, 17, 0, 0, 0, 0);
             AccountDate.ValueChanged += AccountDate_ValueChanged;
             // 
             // linkLabel1

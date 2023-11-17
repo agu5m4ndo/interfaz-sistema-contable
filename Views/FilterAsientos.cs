@@ -89,7 +89,7 @@ namespace Sistema_contable
                  
                 dataGridView1.Rows.Remove(filaClicada);
 
-                //FALTA MÉTODO PARA ELIMINAR UN ASIENTO DE LA BLOCKCHAIN DESDE EL SERVICIO
+               
                 servicio.EliminarAsiento(seat[e.RowIndex]);
             }
             if (e.RowIndex >= 0 && e.ColumnIndex == 0 && dataGridView1.Rows[0].Cells[0].Value != null)
@@ -111,20 +111,7 @@ namespace Sistema_contable
                  
                 dataGridView1.Rows.Clear();
                 seat = servicio.FiltrarAsientosEntreFechas(dateTimePicker1.Value, dateTimePicker2.Value);
-                foreach (Seat asiento in seat)
-                {
-                    Debug.WriteLine(asiento._Accounts[0]._Nombre);
-                }
-/*
-                List<Seat> asientosFiltrados = new List<Seat>();
-                foreach (Seat asiento in seat)
-                {
-                    if (asiento.Date >= dateTimePicker1.Value && asiento.Date <= dateTimePicker2.Value)
-                    {
-                        asientosFiltrados.Add(asiento);
-                    }
-                }
-*/
+
                 Cargar_datos_asientos(seat);
             }
         }

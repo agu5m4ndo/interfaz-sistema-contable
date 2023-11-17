@@ -1,0 +1,29 @@
+{
+  "Blocks": [
+    {
+      "seat": {
+        "Date": "2023-11-17T03:00:00Z",
+        "_HashSeat": "DB288134B7D1C9DBF0AD7B5651EC73BC6C09D7CC0BEDC396335F3828632DE1D8",
+        "_Accounts": [
+          {
+            "_Nombre": "Banco",
+            "_CuentaId": 1,
+            "_Tipo": 0,
+            "_Importe": 100.0,
+            "_Fecha": "2023-11-17T00:00:00"
+          },
+          {
+            "_Nombre": "Muebles y Útiles",
+            "_CuentaId": 2,
+            "_Tipo": 1,
+            "_Importe": 100.0,
+            "_Fecha": "2023-11-17T00:00:00"
+          }
+        ]
+      },
+      "Hash": "0000ACF68688ED4F2E3775188035C1F758FF72E23B78B1F9DF46B40800659E1F",
+      "PreviousHash": "61BE5D1F68C124C5ED1E12E46D9EB01344FE08B5741D99769BF36E69DAFC20A3"
+    }
+  ],
+  "_TempAccount": []
+}
