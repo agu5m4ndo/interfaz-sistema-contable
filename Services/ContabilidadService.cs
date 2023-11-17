@@ -18,27 +18,31 @@ namespace Sistema_contable
     //CONSIDERAR ELIMINAR "MOVEMENT" Y "CUENTAMAYOR" (SI SE LES OCURRE UNA LÓGICA PIOLA PARA ESA ÚLTIMA, AGREGUENLA".
     public class ContabilidadService
     {
-        private Dictionary<int, CuentaContable> cuentas;
-        private List<Seat> asientos;
+        public Blockchain blockchain = new Blockchain();
 
         public ContabilidadService()
         {
-            librosDiarios = new List<LibroDiario>();
-            cuentas = new Dictionary<int, CuentaContable>();
-            asientos = new List<Seat>();
+            
         }
 
         //falta guardar con blockchain
         public void GuardarAsiento(Seat asiento)
         {
-            asientos.Add(asiento);
-            ObtenerLibroDiarioActual().AgregarAsiento(asiento);
+            Block block = new Block(asiento, this.blockchain);
         }
 
         //Falta buscar y manejar por blockchain
-        public List<Seat> ObtenerAsientoPorFecha(DateTime fecha)
+        public Seat ObtenerAsientoPorFecha(DateTime fecha)
         {
-            return asientos.Where(a => a.Date.Date == fecha.Date).ToList();
+            foreach (var block in blockchain.Blocks)
+            {
+                if (block.seat.Date == fecha)
+                {
+                    return block.seat;
+                }
+            }
+
+            return null;
         }
 
         //Falta buscar por blockchain
@@ -50,92 +54,67 @@ namespace Sistema_contable
         //Falta buscar y manejar por blockchain
         public List<Seat> FiltrarAsientosEntreFechas(DateTime fechaInicio, DateTime fechaFin)
         {
-            return asientos.Where(a => a.Date >= fechaInicio && a.Date <= fechaFin).ToList();
-        }
+            List<Seat> seatsInRange = new List<Seat>();
 
-        //Falta buscar y manejar por blockchain
-        public void GuardarCuenta(CuentaContable cuenta)
-        {
-            cuentas[cuenta.CuentaId] = cuenta;
-        }
-
-        public CuentaContable ObtenerCuentaPorId(int cuentaId)
-        {
-            if (cuentas.ContainsKey(cuentaId))
+            foreach (var block in blockchain.Blocks)
             {
-                return cuentas[cuentaId];
-            }
-            return null;
-        }
-
-        public List<CuentaContable> ObtenerTodasLasCuentas()
-        {
-            return cuentas.Values.ToList();
-        }
-
-        //Revisar este código
-        public Dictionary<int, decimal> GenerarLibroMayor(int cuentaId)
-        {
-            Dictionary<int, decimal> libroMayor = new Dictionary<int, decimal>();
-
-            foreach (var libroDiario in librosDiarios)
-            {
-                foreach (var asiento in libroDiario.Asientos)
+                if (block.seat.Date >= fechaInicio && block.seat.Date <= fechaFin)
                 {
-                    // Verificar si CuentaId tiene un valor antes de acceder a su propiedad Value.
-                    if (asiento.CuentaId.HasValue && asiento.CuentaId.Value == cuentaId)
-                    {
-                        if (!libroMayor.ContainsKey(asiento.CuentaId.Value))
-                        {
-                            libroMayor[asiento.CuentaId.Value] = 0;
-                        }
+                    seatsInRange.Add(block.seat);
+                }
+            }
 
-                        // Sumar al debe o al haber según el tipo de asiento.
-                        libroMayor[asiento.CuentaId.Value] += asiento.Tipo == TipoCuenta.Debe ? asiento.Importe : -asiento.Importe;
+            return seatsInRange;
+        }
+
+        public List<Account> ObtenerCuentaPorNombre(String nombre)
+        {
+            List<Account> cuentasNombre = new List<Account>();
+            foreach (var block in blockchain.Blocks)
+            {
+                foreach (var cuenta in block.seat._Accounts)
+                {
+                    if (nombre.Equals(cuenta._Nombre))
+                    {
+                        cuentasNombre.Add(cuenta);
                     }
                 }
             }
-            return libroMayor;
+
+            return cuentasNombre;
+        }
+
+        public List<String> ObtenerTodasLasCuentas()
+        {
+            List<String> nombreCuenta = new List<string>();
+            int cont = 0;
+            foreach (var block in blockchain.Blocks)
+            {
+                foreach (var cuenta in block.seat._Accounts)
+                {
+                    if (!nombreCuenta.Contains(cuenta._Nombre))
+                    {
+                        nombreCuenta.Add(cuenta._Nombre);
+                    }
+                }
+            }
+
+            return nombreCuenta;
         }
 
         //Revisar este código
-        private LibroDiario ObtenerLibroDiarioActual()
+        public List<List<Account>> GenerarLibroMayor()
         {
-           
+            List<List<Account>> listaCuentas = new List<List<Account>>();
 
-            // Por ahora, simplemente crearemos un nuevo libro diario si no hay ninguno
-            if (librosDiarios.Count == 0 || librosDiarios.Last().Asientos.Count >= 100) // Por ejemplo, cada libro diario tiene 100 asientos
+            List<String> cuentas = ObtenerTodasLasCuentas();
+
+            foreach (var nombre in cuentas)
             {
-                var nuevoLibroDiario = new LibroDiario();
-                librosDiarios.Add(nuevoLibroDiario);
-                return nuevoLibroDiario;
+                listaCuentas.Add(ObtenerCuentaPorNombre(nombre));
             }
 
-            return librosDiarios.Last();
-        }
-        public int ObtenerIdPorNombreDeCuenta(string nombreCuenta)
-        {
-            // Buscar en el diccionario de cuentas por nombre
-            var cuenta = cuentas.Values.FirstOrDefault(c => c.Nombre == nombreCuenta);
-
-            // Devolver el ID si se encuentra la cuenta, o un valor predeterminado si no se encuentra
-            return cuenta?.CuentaId ?? -1;
-        }
-        public List<Account> ObtenerCuentasDeAsiento(DateTime fecha)
-        {
-            var asiento = asientos.FirstOrDefault(a => a.Date.Date == fecha.Date);
-
-            if (asiento != null)
-            {
-                // Obtener las cuentas asociadas al asiento
-                var cuentasAsiento = asiento.CuentaId == null
-                    ? new List<Account>()  // En caso de que no haya ID de cuenta
-                    : new List<Account> { new Account { Cuenta = ObtenerCuentaPorId(asiento.CuentaId.Value), Importe = asiento.Importe } };
-
-                return cuentasAsiento;
-            }
-
-            return new List<Account>();
+            return listaCuentas;
         }
     }
 }

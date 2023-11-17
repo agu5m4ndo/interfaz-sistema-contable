@@ -6,12 +6,12 @@ namespace Sistema_contable
     public class Seat
     {
         private DateTime date;
-        private List<Account> Accounts = new List<Account>();
-
+        private List<Account> Accounts;
+        private string hashSeat;
 
         public DateTime Date { get => date; set => date = value; }
-        public string HashSeat { get => Miner.CalculateHash(hashSeat); }
-
+        public String _HashSeat { get => hashSeat; set => hashSeat = Miner.CalculateHash(value); }
+        public List<Account> _Accounts { get => Accounts; }
 
         public Seat()
         {
@@ -19,32 +19,12 @@ namespace Sistema_contable
         }
 
         //falta el name en el constructor
-        public Seat(DateTime date, int? cuentaID, double importe)
+        public Seat(DateTime date, List<Account> account)
         {
+            string stringDate = date.ToString();
             Date = date;
-            Accounts = new List<Account>();
-            HashSeat = Miner.CalculateHash(name);
-        }
-
-        public Seat(DateTime _date, List<Account> _accounts)
-        {
-            Accounts = _accounts;
-            Date = _date;
-        }
-
-        public void AgregarAccount(Account account)
-        {
-            Accounts.Add(account);
-        }
-
-        public void EliminarAccount(int id)
-        {
-            Accounts.RemoveAt(id);
-        }
-
-        public List<Account> GetAccounts()
-        {
-            return Accounts;
+            Accounts = account;
+            _HashSeat = Miner.CalculateHash(stringDate);
         }
 
         public double TotalSeat()
@@ -53,7 +33,7 @@ namespace Sistema_contable
             double totalHaber = 0;
             foreach (Account account in Accounts)
             {
-                if (account._Tipo == Tipo.Debe)
+                if (account._Tipo == TipoCuenta.Debe)
                 {
                     totalDebe += account._Importe;
                 }

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\Nueva carpeta\\Sistema contable\\Views\\Sistema contable.csproj": {}
+    "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj": {}
   },
   "projects": {
-    "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\Nueva carpeta\\Sistema contable\\Views\\Sistema contable.csproj": {
+    "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\Nueva carpeta\\Sistema contable\\Views\\Sistema contable.csproj",
+        "projectUniqueName": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj",
         "projectName": "Sistema contable",
-        "projectPath": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\Nueva carpeta\\Sistema contable\\Views\\Sistema contable.csproj",
-        "packagesPath": "C:\\Users\\agusm\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\Nueva carpeta\\Sistema contable\\Views\\obj\\",
+        "projectPath": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj",
+        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
+        "outputPath": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\agusm\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
