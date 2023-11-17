@@ -1,3 +1,4 @@
+
 namespace Sistema_contable
 {
     internal static class Program

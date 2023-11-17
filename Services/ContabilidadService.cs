@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,31 +8,36 @@ using System.Threading.Tasks;
 
 namespace Sistema_contable
 {
-    //REVISAR TODA LA LÓGICA DE ESTE ARCHIVO. NO DEBEN EXISTIR LAS CLASES LIBRO DIARIO NI CUENTACONTABLE.
-    //CREAR LOS MÉTODOS SOLICITADOS EN LA LÍNEA 106 DE "FILTERASIENTOS" Y EN LA LÍNEA 40 DE "LIBROMAYOR",
-    //55 Y 134 DE "ADDASIENTO" Y CONECTARLO CON BLOCKCHAIN.
-
-    //REVISAR LA LÓGICA DEL MINER CON LOS CAMBIOS EFECTUADOS DE LA CLASE ACCOUNT.
-
-    //REVISAR EL ERROR DE LA LINEA 13 Y 26 EN "SEAT".
-
-    //CONSIDERAR ELIMINAR "MOVEMENT" Y "CUENTAMAYOR" (SI SE LES OCURRE UNA LÓGICA PIOLA PARA ESA ÚLTIMA, AGREGUENLA".
     public class ContabilidadService
     {
-        public Blockchain blockchain = new Blockchain();
+
+        public static Blockchain blockchain = new Blockchain();
 
         public ContabilidadService()
         {
             
         }
 
-        //falta guardar con blockchain
-        public void GuardarAsiento(Seat asiento)
+        public Block GuardarAsiento(Seat asiento)
         {
-            Block block = new Block(asiento, this.blockchain);
+            if (blockchain != null && asiento != null)
+            {
+                Block block = new Block(asiento, blockchain);
+                blockchain.Blocks.Add(block);
+
+                Debug.WriteLine("Cantidad de asientos: " + blockchain.Blocks.Count);
+                return block;
+            }
+
+            return null;
         }
 
-        //Falta buscar y manejar por blockchain
+
+        public void EliminarAsiento(Seat asiento)
+        {
+            blockchain.Blocks.Remove(blockchain.Blocks.Find(x => x.seat._HashSeat == asiento._HashSeat));
+        }
+
         public Seat ObtenerAsientoPorFecha(DateTime fecha)
         {
             foreach (var block in blockchain.Blocks)
@@ -45,13 +51,18 @@ namespace Sistema_contable
             return null;
         }
 
-        //Falta buscar por blockchain
-        /*public List<Seat> ObtenerTodosLosAsientos()
+        public List<Seat> ObtenerTodosLosAsientos()
         {
-            return asientos.ToList();
-        }*/
+            List<Seat> seats = new List<Seat>();
 
-        //Falta buscar y manejar por blockchain
+            foreach (var block in blockchain.Blocks)
+            {
+                seats.Add(block.seat);
+            }
+
+            return seats;
+        }
+
         public List<Seat> FiltrarAsientosEntreFechas(DateTime fechaInicio, DateTime fechaFin)
         {
             List<Seat> seatsInRange = new List<Seat>();
@@ -102,7 +113,6 @@ namespace Sistema_contable
             return nombreCuenta;
         }
 
-        //Revisar este código
         public List<List<Account>> GenerarLibroMayor()
         {
             List<List<Account>> listaCuentas = new List<List<Account>>();

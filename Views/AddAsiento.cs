@@ -1,14 +1,21 @@
 using System.Diagnostics;
+using System.Reflection.Metadata;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sistema_contable
 {
     public partial class AddAsiento : Form
     {
-        Seat seat = new Seat();
-        public AddAsiento()
+        ContabilidadService service;
+        List<Account> accounts = new List<Account>();
+        List<String> nombreCuentas = new List<String>{"Caja", "Banco", "Mercadería", "Deudores Varios", "Rodados", "Proveedores", "Instalaciones", "Muebles y Útiles", "Ventas", "Documentos a Pagar", "Alquileres", "Seguros", "Seguros", "Impuestos", "Valores a Depositar"};
+        //Crear lista de strings con elementos previos
+        
+        public AddAsiento(ContabilidadService service)
         {
             InitializeComponent();
+            this.service = service;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,8 +59,7 @@ namespace Sistema_contable
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 3 && dataGridView1.Rows[0].Cells[0].Value != null)
             {
-                //AGREGAR EN CONTABILIDAD SERVICIO UN SERVICIO PARA ELIMINAR DE LA BLOCKCHAIN AL ASIENTO
-                //seat.eliminarCuenta(e.RowIndex);
+                accounts.RemoveAt(e.RowIndex);
                 DataGridViewRow filaClicada = dataGridView1.Rows[e.RowIndex];
                 dataGridView1.Rows.Remove(filaClicada);
             }
@@ -76,10 +82,17 @@ namespace Sistema_contable
 
         private void button4_Click_1(object sender, EventArgs e)
         {
+
             string nombre = AccountName.Text;
             if (nombre == "" || nombre == "Seleccionar cuenta")
             {
                 ErrorMessage.Text = "Debe ingresar un nombre de cuenta";
+                ErrorMessage.Visible = true;
+                return;
+            }
+            if (!nombreCuentas.Contains(nombre))
+            {
+                ErrorMessage.Text = "Debe ingresar un nombre de cuenta válido";
                 ErrorMessage.Visible = true;
                 return;
             }
@@ -98,7 +111,8 @@ namespace Sistema_contable
             AccountName.Text = "Seleccionar cuenta";
             AccountAmount.Text = "";
             radioButton1.Checked = true;
-            seat.AgregarAccount(new Account(nombre, double.Parse(importe), destino, DateTime.Now.AddDays(-5)));
+            accounts.Add(new Account(nombre, double.Parse(importe), destino, fecha));
+
             agregarFila(nombre, importe, destino);
         }
 
@@ -123,6 +137,7 @@ namespace Sistema_contable
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Seat seat = new Seat(AccountDate.Value.ToUniversalTime(), accounts);
             if (seat.TotalSeat() != 0)
             {
                 ErrorMessage.Text = "El seat no está balanceado";
@@ -130,13 +145,14 @@ namespace Sistema_contable
             }
             else
             {
-                ContabilidadService servicio = new ContabilidadService();
-                servicio.GuardarAsiento(seat);
-                foreach (Account c in seat.GetAccounts())
+                Block bloque = service.GuardarAsiento(seat);
+                foreach (Account c in bloque.seat._Accounts)
                 {
                     ErrorMessage.Visible = false;
-                    Debug.WriteLine(c._Nombre + " " + c._Importe + " " + c._Tipo);
                 }
+                mainView main = new mainView();
+                this.Close();
+                main.Show();
             }
         }
 

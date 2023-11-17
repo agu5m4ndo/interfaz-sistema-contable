@@ -41,3 +41,26 @@ C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\Nueva carpeta
 C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\Nueva carpeta\Sistema contable\Views\obj\Debug\net6.0-windows\Sistema contable.csproj.AssemblyReference.cache
 C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\Nueva carpeta\Sistema contable\Views\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
 C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\Nueva carpeta\Sistema contable\Views\obj\Debug\net6.0-windows\Sistema contable.csproj.CopyComplete
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Sistema contable.exe
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Sistema contable.deps.json
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Sistema contable.runtimeconfig.json
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Sistema contable.dll
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Sistema contable.pdb
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.csproj.AssemblyReference.cache
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema_contable.Properties.Resources.resources
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema_contable.AddAsiento.resources
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema_contable.FilterAsientos.resources
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema_contable.LibroMayor.resources
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema_contable.mainView.resources
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.csproj.GenerateResource.cache
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.AssemblyInfoInputs.cache
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.AssemblyInfo.cs
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.csproj.CoreCompileInputs.cache
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.csproj.CopyComplete
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.dll
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\refint\Sistema contable.dll
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.pdb
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\Sistema contable.genruntimeconfig.cache
+C:\Users\agusm\Documents\Archivos-UTN\Tercer semestre\Contabilidad\sistemaContable\obj\Debug\net6.0-windows\ref\Sistema contable.dll

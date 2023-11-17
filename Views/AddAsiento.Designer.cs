@@ -197,7 +197,7 @@
             AccountName.BackColor = Color.White;
             AccountName.Cursor = Cursors.Hand;
             AccountName.FormattingEnabled = true;
-            AccountName.Items.AddRange(new object[] { "Caja", "Banco", "Mercadería" });
+            AccountName.Items.AddRange(new object[] { "Caja", "Banco", "Mercadería", "Deudores Varios", "Rodados", "Proveedores", "Instalaciones", "Muebles y Útiles", "Ventas", "Documentos a Pagar", "Alquileres", "Seguros", "Impuestos", "Valores a Depositar" });
             AccountName.Location = new Point(96, 22);
             AccountName.Name = "AccountName";
             AccountName.Size = new Size(203, 23);

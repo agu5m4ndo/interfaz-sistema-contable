@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "BNZlk5FkrosfhQB2cTX833NLc2e0nFD68mYVv5xHdd7BqqmjwVFBxcikq1JT9dH5DbAdEOyp1vNEgscRELyK5Q==",
+  "dgSpecHash": "r2Fk7BX1SjP3O4kUVKlQepnNZQXUDARXV0DLKeS4np1zxM6f+4e+Q6AN4B8bebezDZVAUq2XhJcUGZ8z0y9F0g==",
   "success": true,
-  "projectFilePath": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj",
+  "projectFilePath": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\Sistema contable.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\agusm\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

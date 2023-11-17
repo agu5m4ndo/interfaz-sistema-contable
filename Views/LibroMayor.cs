@@ -12,35 +12,16 @@ namespace Sistema_contable
 {
     public partial class LibroMayor : Form
     {
-        List<List<Account>> listaDeListas = new List<List<Account>>();
-        List<Account> listaCaja = new List<Account>();
-        List<Account> listaBanco = new List<Account>();
-        List<Account> listaProveedores = new List<Account>();
-        public LibroMayor()
+        ContabilidadService service;
+        List<List<Account>> listaDeCuentas;
+        public LibroMayor(ContabilidadService servicio)
         {
             InitializeComponent();
+            this.service = servicio;
 
-            /*
-            EJEMPLO:
-            listaCaja.Add(new Account("Caja", 100.0, TipoCuenta.Debe, DateTime.Now.AddDays(-5)));
-            listaCaja.Add(new Account("Caja", 50.0, TipoCuenta.Haber, DateTime.Now.AddDays(-3)));
-            listaCaja.Add(new Account("Caja", 75.0, TipoCuenta.Debe, DateTime.Now.AddDays(-1)));
-
-            listaBanco.Add(new Account("Banco", 100.0, TipoCuenta.Debe, DateTime.Now.AddDays(-10)));
-            listaBanco.Add(new Account("Banco", 50.0, TipoCuenta.Haber, DateTime.Now.AddDays(-5)));
-
-            listaProveedores.Add(new Account("Proveedores", 75.0, TipoCuenta.Debe, DateTime.Now.AddDays(-3)));
-            listaProveedores.Add(new Account("Proveedores", 75.0, TipoCuenta.Haber, DateTime.Now.AddDays(-1)));
-
-            listaDeListas.Add(listaCaja);
-            listaDeListas.Add(listaBanco);
-            listaDeListas.Add(listaProveedores);
-            */
-
-            //FALTA CREAR MÉTODO EN SERVICIOS PARA CARGAR DATOS DE LOS ASIENTOS GUARDADOS, FILTRAR SUS CUENTAS
-            //Y COLOCARLO ACÁ
-
-            Cargar_cuentas(listaDeListas);
+            listaDeCuentas = new List<List<Account>>();
+            listaDeCuentas = service.GenerarLibroMayor();
+            Cargar_cuentas(listaDeCuentas);
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -104,7 +85,7 @@ namespace Sistema_contable
             }
             else
             {
-                resultado.Text = diferencia.ToString() + " - Resultado no balanceado";
+                resultado.Text = Math.Abs(diferencia).ToString() + " - Resultado no balanceado";
                 resultado.ForeColor = Color.Red;
                 resultado.Visible = true;
             }
@@ -113,7 +94,7 @@ namespace Sistema_contable
         private void borrar_cuentas()
         {
             int totalFilas = dataGridView3.Rows.Count;
-            if (totalFilas > 1)
+            if (totalFilas >= 1)
             {
                 for (int i = 0; i < totalFilas; i++)
                 {
@@ -134,8 +115,13 @@ namespace Sistema_contable
             }
             if (e.RowIndex >= 0 && e.ColumnIndex == 0 && dataGridView1.Rows[0].Cells[0].Value != null)
             {
-                Cargar_datos_cuentas(e.RowIndex, listaDeListas);
+                Cargar_datos_cuentas(e.RowIndex, listaDeCuentas);
             }
+        }
+
+        private void resultado_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

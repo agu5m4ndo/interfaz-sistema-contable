@@ -6,7 +6,6 @@ using Formatting = System.Xml.Formatting;
 
 namespace Sistema_contable
 {
-    [Serializable]
     public class Blockchain
     {
         private List<Block> blocks = new List<Block>();

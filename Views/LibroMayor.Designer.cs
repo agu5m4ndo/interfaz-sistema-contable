@@ -192,6 +192,7 @@
             resultado.TabIndex = 31;
             resultado.Text = "10000";
             resultado.Visible = false;
+            resultado.Click += resultado_Click;
             // 
             // LibroMayor
             // 

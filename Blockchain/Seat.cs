@@ -27,6 +27,8 @@ namespace Sistema_contable
             _HashSeat = Miner.CalculateHash(stringDate);
         }
 
+
+
         public double TotalSeat()
         {
             double totalDebe = 0;

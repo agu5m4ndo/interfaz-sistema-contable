@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj": {}
+    "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\Sistema contable.csproj": {}
   },
   "projects": {
-    "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj": {
+    "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\Sistema contable.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj",
+        "projectUniqueName": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\Sistema contable.csproj",
         "projectName": "Sistema contable",
-        "projectPath": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\Sistema contable.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "G:\\OneDrive - alumnos.frm.utn.edu.ar\\UTN\\Laboratorio 3\\interfaz-sistema-contable\\obj\\",
+        "projectPath": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\Sistema contable.csproj",
+        "packagesPath": "C:\\Users\\agusm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\agusm\\Documents\\Archivos-UTN\\Tercer semestre\\Contabilidad\\sistemaContable\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\agusm\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {

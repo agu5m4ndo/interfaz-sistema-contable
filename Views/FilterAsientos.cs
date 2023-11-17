@@ -14,27 +14,11 @@ namespace Sistema_contable
     public partial class FilterAsientos : Form
     {
         List<Seat> seat;
-        ContabilidadService servicio = new ContabilidadService();
-        public FilterAsientos()
+        ContabilidadService servicio;
+        public FilterAsientos(ContabilidadService servicio)
         {
             InitializeComponent();
-            /*
-            EJEMPLO:
-            Account cuenta1 = new Account("Caja", 100.0, TipoCuenta.Debe, DateTime.Now.AddDays(-5));
-            Account cuenta2 = new Account("Banco", 50.0, TipoCuenta.Haber, DateTime.Now.AddDays(-6));
-            Account cuenta3 = new Account("Proveedores", 75.0, TipoCuenta.Debe, DateTime.Now.AddDays(-7));
-            
-            // Crear seat
-            seat = new List<Seat>();
-
-            // Seat 1
-            List<Account> cuentasAsiento1 = new List<Account> { cuenta1, cuenta2 };
-            seat.Add(new Seat(DateTime.Now, cuentasAsiento1));
-
-            // Seat 2
-            List<Account> cuentasAsiento2 = new List<Account> { cuenta2, cuenta3 };
-            seat.Add(new Seat(DateTime.Now.AddDays(-10), cuentasAsiento2));
-            */
+            this.servicio = servicio;
         }
 
         private void Cargar_datos_asientos(List<Seat> seat)
@@ -44,10 +28,11 @@ namespace Sistema_contable
                 dataGridView1.Rows.Add(asiento.Date);
             }
         }
-        private void Cargar_datos_cuentas(int index, List<Seat> seat)
+        private void Cargar_datos_cuentas(Seat seat)
         {
             borrar_cuentas();
-            foreach (Account cuenta in seat[index].GetAccounts())
+             
+            foreach (Account cuenta in seat._Accounts)
             {
                 DataGridViewRow nuevaFila = new DataGridViewRow();
 
@@ -101,14 +86,15 @@ namespace Sistema_contable
             {
                 DataGridViewRow filaClicada = dataGridView1.Rows[e.RowIndex];
                 borrar_cuentas();
+                 
                 dataGridView1.Rows.Remove(filaClicada);
 
                 //FALTA MÉTODO PARA ELIMINAR UN ASIENTO DE LA BLOCKCHAIN DESDE EL SERVICIO
-                //servicio.eliminar(seat);
+                servicio.EliminarAsiento(seat[e.RowIndex]);
             }
             if (e.RowIndex >= 0 && e.ColumnIndex == 0 && dataGridView1.Rows[0].Cells[0].Value != null)
             {
-                Cargar_datos_cuentas(e.RowIndex, seat);
+                Cargar_datos_cuentas(seat[e.RowIndex]);
             }
         }
 
@@ -122,8 +108,14 @@ namespace Sistema_contable
             {
                 ErrorMessage.Visible = false;
                 borrar_cuentas();
+                 
                 dataGridView1.Rows.Clear();
-                List<Seat> seat = servicio.FiltrarAsientosEntreFechas(dateTimePicker1.Value, dateTimePicker2.Value);
+                seat = servicio.FiltrarAsientosEntreFechas(dateTimePicker1.Value, dateTimePicker2.Value);
+                foreach (Seat asiento in seat)
+                {
+                    Debug.WriteLine(asiento._Accounts[0]._Nombre);
+                }
+/*
                 List<Seat> asientosFiltrados = new List<Seat>();
                 foreach (Seat asiento in seat)
                 {
@@ -132,7 +124,8 @@ namespace Sistema_contable
                         asientosFiltrados.Add(asiento);
                     }
                 }
-                Cargar_datos_asientos(asientosFiltrados);
+*/
+                Cargar_datos_asientos(seat);
             }
         }
 

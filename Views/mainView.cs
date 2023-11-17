@@ -12,6 +12,7 @@ namespace Sistema_contable
 {
     public partial class mainView : Form
     {
+        ContabilidadService service = new ContabilidadService();
         public mainView()
         {
             InitializeComponent();
@@ -114,21 +115,21 @@ namespace Sistema_contable
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            AddAsiento addAsiento = new AddAsiento();
+            AddAsiento addAsiento = new AddAsiento(service);
             this.Hide();
             addAsiento.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FilterAsientos filterAsientos = new FilterAsientos();
+            FilterAsientos filterAsientos = new FilterAsientos(service);
             this.Hide();
             filterAsientos.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            LibroMayor libroMayor = new LibroMayor();
+            LibroMayor libroMayor = new LibroMayor(service);
             this.Hide();
             libroMayor.Show();
         }

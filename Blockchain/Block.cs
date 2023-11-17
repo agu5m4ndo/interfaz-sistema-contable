@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 namespace Sistema_contable
 {
-    [Serializable]
     public class Block
     {
         public Seat seat { get; set; }
